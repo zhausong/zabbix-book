@@ -1,6 +1,6 @@
 ```
-wget http://www.percona.com/redir/downloads/Percona-Server-5.6/LATEST/binary/linux/x86_64/Percona-Server-5.6.15-rel63.0-519-static-openssl-1.0.1e.Linux.x86_64.tar.gz   
-tar  xf  Percona-Server-5.6.15-rel63.0-519-static-openssl-1.0.1e.Linux.x86_64.tar.gz   
+#wget http://www.percona.com/redir/downloads/Percona-Server-5.6/LATEST/binary/linux/x86_64/Percona-Server-5.6.15-rel63.0-519-static-openssl-1.0.1e.Linux.x86_64.tar.gz   
+#tar  xf  Percona-Server-5.6.15-rel63.0-519-static-openssl-1.0.1e.Linux.x86_64.tar.gz   
 mv  Percona-Server-5.6.15-rel63.0-519-static-openssl-1.0.1e.Linux.x86_64  /usr/local/    
 cd  /usr/local/Percona-Server-5.6.15-rel63.0-519-static-openssl-1.0.1e.Linux.x86_64/   
 cp  support-files/mysql.server  /etc/init.d/mysqld   
@@ -62,8 +62,9 @@ mv  /etc/my.cnf  /opt/bak
 #chkconfig  mysqld  on   
 #/etc/init.d/mysqld   start   
 ```   
-配置环境变量   
-#vim  ~/.bash_profile    
+#配置环境变量   
+   
 ```
+vim  ~/.bash_profile
 PATH=PATH:HOME/bin:/usr/local/Percona-Server-5.6.15-rel63.0-519-static-openssl-1.0.1e.Linux.x86_64/bin   
 ```   
