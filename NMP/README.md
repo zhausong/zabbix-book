@@ -1,12 +1,20 @@
-1.±¾RPM°ü£¬Ö»Ö§³Öcentos6.X RHEL6.X£¬Èç¹ûÆäËû°æ±¾ÏµÍ³£¬Ğè×ÔĞĞrpmbuild.
-php°²×°Ö®Ç°ĞèĞ¶ÔØÏµÍ³×Ô´øµÄphp°æ±¾
-Ğ¶ÔØÃüÁîÎª£ºrpm -qa|grep php|xargs rpm -e 
-rpm -ivh \
-libicu-4.2.1-9.1.el6_2.x86_64.rpm  \
-libmcrypt-2.5.8-9.el6.x86_64.rpm    \     
-libjpeg-turbo-1.2.1-1.el6.x86_64.rpm  \
-libtidy-0.99.0-19.20070615.1.el6.x86_64.rpm  \
-php-5.4.25-1.el6.x86_64.rpm
+===============
+1.æœ¬RPMåŒ…ï¼Œåªæ”¯æŒcentos6.X RHEL6.Xï¼Œå¦‚æœå…¶ä»–ç‰ˆæœ¬ç³»ç»Ÿï¼Œéœ€è‡ªè¡Œrpmbuild.
 
-Ä¬ÈÏÒÑ¿ªÆôphp-fpm·şÎñ(service php-fpm start)
+phpå®‰è£…ä¹‹å‰éœ€å¸è½½ç³»ç»Ÿè‡ªå¸¦çš„phpç‰ˆæœ¬
+å¸è½½å‘½ä»¤ä¸ºï¼šrpm -qa|grep php|xargs rpm -e   
+rpm -ivh \    
+libicu-4.2.1-9.1.el6_2.x86_64.rpm  \   
+libmcrypt-2.5.8-9.el6.x86_64.rpm    \       
+libjpeg-turbo-1.2.1-1.el6.x86_64.rpm  \   
+libtidy-0.99.0-19.20070615.1.el6.x86_64.rpm  \   
+php-5.4.25-1.el6.x86_64.rpm   
 
+é»˜è®¤å·²å¼€å¯php-fpmæœåŠ¡(service php-fpm start)
+é»˜è®¤è®©php-fpmç”¨sockæ–¹å¼ï¼Œsockæ–‡ä»¶è·¯å¾„ä¸º/var/run/php/php-fpm.sock
+
+ä»¥ä¸‹è½¯ä»¶ä¸ºä¾èµ–åŒ…ï¼Œåœ¨RHELç³»ç»Ÿä¸­éœ€è¦é¢å¤–ä¸‹è½½
+libicu-4.2.1-9.1.el6_2.x86_64.rpm    
+libmcrypt-2.5.8-9.el6.x86_64.rpm       
+libjpeg-turbo-1.2.1-1.el6.x86_64.rpm    
+libtidy-0.99.0-19.20070615.1.el6.x86_64.rpm  
