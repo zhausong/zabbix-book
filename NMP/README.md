@@ -10,7 +10,9 @@ libjpeg-turbo-1.2.1-1.el6.x86_64.rpm  \
 libtidy-0.99.0-19.20070615.1.el6.x86_64.rpm  \   
 php-5.4.25-1.el6.x86_64.rpm   
 
-默认已开启php-fpm服务(service php-fpm start)  
+默认已开启php-fpm服务(service php-fpm start)
+默认让php-fpm用sock方式，sock文件路径为/var/run/php/php-fpm.sock
+
 以下软件为依赖包，在RHEL系统中需要额外下载
 libicu-4.2.1-9.1.el6_2.x86_64.rpm    
 libmcrypt-2.5.8-9.el6.x86_64.rpm       
