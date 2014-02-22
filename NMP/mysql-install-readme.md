@@ -1,4 +1,4 @@
-####Percona-Server数据库的二进制安装方法##########     
+##########################Percona-Server数据库的二进制安装方法   
 #下载文件，解压
 ```
 #wget http://www.percona.com/redir/downloads/Percona-Server-5.6/LATEST/binary/linux/x86_64/Percona-Server-5.6.15-rel63.0-519-static-openssl-1.0.1e.Linux.x86_64.tar.gz   
