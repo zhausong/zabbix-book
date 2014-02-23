@@ -1,26 +1,32 @@
+```
 #wget http://www.percona.com/redir/downloads/Percona-Server-5.6/LATEST/binary/linux/x86_64/Percona-Server-5.6.15-rel63.0-519-static-openssl-1.0.1e.Linux.x86_64.tar.gz   
 # tar  xf  Percona-Server-5.6.15-rel63.0-519-static-openssl-1.0.1e.Linux.x86_64.tar.gz   
 # mv  Percona-Server-5.6.15-rel63.0-519-static-openssl-1.0.1e.Linux.x86_64  /usr/local/    
 #cd  /usr/local/Percona-Server-5.6.15-rel63.0-519-static-openssl-1.0.1e.Linux.x86_64/   
 # cp  support-files/mysql.server  /etc/init.d/mysqld   
-建立用户   
+```
+锟斤拷锟斤拷锟矫伙拷   
+```
 #groupadd -g 27 mysql    
 #useradd -g 27 -s /sbin/nologin mysql   
-改变权限   
-#chown -R  mysql.mysql /usr/local/Percona-Server-5.6.15-rel63.0-519-static-openssl-1.0.1e.Linux.x86_64/   
-提示：如果路径不为/usr/local，则需要修改启动脚本/etc/init.d/mysqld   
-启动percona-server服务   
-注意不能存在文件/etc/my.cnf，否则，由于my.cnf里的不正确配置而导致mysql不能正常启动，因为mysqld脚本里面默认路径会去找/etc/my.cnf这个文件。   
+```
+锟侥憋拷权锟斤拷   
+```
+#chown -R  mysql.mysql /usr/local/Percona-Server-5.6.15-rel63.0-519-static-openssl-1.0.1e.Linux.x86_64/ 
+```
+锟斤拷示锟斤拷锟斤拷锟斤拷路锟斤拷锟斤拷为/usr/local锟斤拷锟斤拷锟斤拷要锟睫革拷锟斤拷锟斤拷锟脚憋拷/etc/init.d/mysqld   
+锟斤拷锟斤拷percona-server锟斤拷锟斤拷   
+注锟解不锟杰达拷锟斤拷锟侥硷拷/etc/my.cnf锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷my.cnf锟斤拷锟侥诧拷锟斤拷确锟斤拷锟矫讹拷锟斤拷锟斤拷mysql锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷为mysqld锟脚憋拷锟斤拷锟斤拷默锟斤拷路锟斤拷锟斤拷去锟斤拷/etc/my.cnf锟斤拷锟斤拷锟侥硷拷锟斤拷   
 #mysqld --verbose --help|grep my.cnf    
-my.cnf将会存在于以下路径，依次为优先级匹配。   
+my.cnf锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷路锟斤拷锟斤拷锟斤拷锟斤拷为锟斤拷锟饺硷拷匹锟戒。   
 /etc/my.cnf   
 /etc/mysql/my.cnf   
 /usr/local/Percona-Server-5.6.15-rel63.0-519-static-openssl-1.0.1e.Linux.x86_64/etc/my.cnf   
 ~/.my.cnf   
-但在测试的时候，发现并未读取   
+锟斤拷锟节诧拷锟皆碉拷时锟津，凤拷锟街诧拷未锟斤拷取   
 /usr/local/Percona-Server-5.6.15-rel63.0-519-static-openssl-1.0.1e.Linux.x86_64/etc/my.cnf    
    
-配置my.cnf文件   
+锟斤拷锟斤拷my.cnf锟侥硷拷   
 # cat /usr/local/Percona-Server-5.6.15-rel63.0-519-static-openssl-1.0.1e.Linux.x86_64/my.cnf    
 [mysqld]   
 datadir=/usr/local/Percona-Server-5.6.15-rel63.0-519-static-openssl-1.0.1e.Linux.x86_64/data   
@@ -34,10 +40,10 @@ innodb_file_per_table=1
 [mysqld_safe]   
 log-error=/usr/local/Percona-Server-5.6.15-rel63.0-519-static-openssl-1.0.1e.Linux.x86_64/var/log/mysqld.log   
 pid-file=/usr/local/Percona-Server-5.6.15-rel63.0-519-static-openssl-1.0.1e.Linux.x86_64/var/run/mysqld/mysqld.pid   
-以上my.cnf为简单的参数配置，后期还需要对此进行调整   
+锟斤拷锟斤拷my.cnf为锟津单的诧拷锟斤拷锟斤拷锟矫ｏ拷锟斤拷锟节伙拷锟斤拷要锟皆此斤拷锟叫碉拷锟斤拷   
 #mkdir  -p  /usr/local/Percona-Server-5.6.15-rel63.0-519-static-openssl-1.0.1e.Linux.x86_64/var/run   
 #mkdir  -p  /usr/local/Percona-Server-5.6.15-rel63.0-519-static-openssl-1.0.1e.Linux.x86_64/var/log   
-初始化mysql   
+锟斤拷始锟斤拷mysql   
 #mkdir  /opt/bak   
 #mv  /etc/my.cnf  /opt/bak   
 #./scripts/mysql_install_db  \   
@@ -48,7 +54,7 @@ pid-file=/usr/local/Percona-Server-5.6.15-rel63.0-519-static-openssl-1.0.1e.Linu
 #chkconfig  mysqld  on   
 #/etc/init.d/mysqld   start   
    
-配置环境变量   
+锟斤拷锟矫伙拷锟斤拷锟斤拷锟斤拷   
 #vim  ~/.bash_profile    
 PATH=PATH:HOME/bin:/usr/local/Percona-Server-5.6.15-rel63.0-519-static-openssl-1.0.1e.Linux.x86_64/bin   
    
