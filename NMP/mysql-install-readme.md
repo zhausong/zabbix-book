@@ -1,26 +1,39 @@
+#Percona-Serveræ•°æ®åº“çš„äºŒè¿›åˆ¶å®‰è£…æ–¹æ³•
+
+#ä¸‹è½½æ–‡ä»¶
+```
 #wget http://www.percona.com/redir/downloads/Percona-Server-5.6/LATEST/binary/linux/x86_64/Percona-Server-5.6.15-rel63.0-519-static-openssl-1.0.1e.Linux.x86_64.tar.gz   
 # tar  xf  Percona-Server-5.6.15-rel63.0-519-static-openssl-1.0.1e.Linux.x86_64.tar.gz   
 # mv  Percona-Server-5.6.15-rel63.0-519-static-openssl-1.0.1e.Linux.x86_64  /usr/local/    
 #cd  /usr/local/Percona-Server-5.6.15-rel63.0-519-static-openssl-1.0.1e.Linux.x86_64/   
 # cp  support-files/mysql.server  /etc/init.d/mysqld   
-½¨Á¢ÓÃ»§   
+```
+#å»ºç«‹ç”¨æˆ·   
+```
 #groupadd -g 27 mysql    
 #useradd -g 27 -s /sbin/nologin mysql   
-¸Ä±äÈ¨ÏŞ   
+```
+#æ”¹å˜æƒé™   
+```
 #chown -R  mysql.mysql /usr/local/Percona-Server-5.6.15-rel63.0-519-static-openssl-1.0.1e.Linux.x86_64/   
-ÌáÊ¾£ºÈç¹ûÂ·¾¶²»Îª/usr/local£¬ÔòĞèÒªĞŞ¸ÄÆô¶¯½Å±¾/etc/init.d/mysqld   
-Æô¶¯percona-server·şÎñ   
-×¢Òâ²»ÄÜ´æÔÚÎÄ¼ş/etc/my.cnf£¬·ñÔò£¬ÓÉÓÚmy.cnfÀïµÄ²»ÕıÈ·ÅäÖÃ¶øµ¼ÖÂmysql²»ÄÜÕı³£Æô¶¯£¬ÒòÎªmysqld½Å±¾ÀïÃæÄ¬ÈÏÂ·¾¶»áÈ¥ÕÒ/etc/my.cnfÕâ¸öÎÄ¼ş¡£   
+```
+æç¤ºï¼šå¦‚æœè·¯å¾„ä¸ä¸º/usr/localï¼Œåˆ™éœ€è¦ä¿®æ”¹å¯åŠ¨è„šæœ¬/etc/init.d/mysqld   
+#å¯åŠ¨percona-serveræœåŠ¡   
+æ³¨æ„ä¸èƒ½å­˜åœ¨æ–‡ä»¶/etc/my.cnfï¼Œå¦åˆ™ï¼Œç”±äºmy.cnfé‡Œçš„ä¸æ­£ç¡®é…ç½®è€Œå¯¼è‡´mysqlä¸èƒ½æ­£å¸¸å¯åŠ¨ï¼Œå› ä¸ºmysqldè„šæœ¬é‡Œé¢é»˜è®¤è·¯å¾„ä¼šå»æ‰¾/etc/my.cnfè¿™ä¸ªæ–‡ä»¶ã€‚
+```
 #mysqld --verbose --help|grep my.cnf    
-my.cnf½«»á´æÔÚÓÚÒÔÏÂÂ·¾¶£¬ÒÀ´ÎÎªÓÅÏÈ¼¶Æ¥Åä¡£   
+my.cnfå°†ä¼šå­˜åœ¨äºä»¥ä¸‹è·¯å¾„ï¼Œä¾æ¬¡ä¸ºä¼˜å…ˆçº§åŒ¹é…ã€‚   
 /etc/my.cnf   
 /etc/mysql/my.cnf   
 /usr/local/Percona-Server-5.6.15-rel63.0-519-static-openssl-1.0.1e.Linux.x86_64/etc/my.cnf   
 ~/.my.cnf   
-µ«ÔÚ²âÊÔµÄÊ±ºò£¬·¢ÏÖ²¢Î´¶ÁÈ¡   
+```
+ä½†åœ¨æµ‹è¯•çš„æ—¶å€™ï¼Œå‘ç°å¹¶æœªè¯»å–   
+```
 /usr/local/Percona-Server-5.6.15-rel63.0-519-static-openssl-1.0.1e.Linux.x86_64/etc/my.cnf    
-   
-ÅäÖÃmy.cnfÎÄ¼ş   
+``` 
+#é…ç½®my.cnfæ–‡ä»¶
+```
 # cat /usr/local/Percona-Server-5.6.15-rel63.0-519-static-openssl-1.0.1e.Linux.x86_64/my.cnf    
 [mysqld]   
 datadir=/usr/local/Percona-Server-5.6.15-rel63.0-519-static-openssl-1.0.1e.Linux.x86_64/data   
@@ -34,10 +47,14 @@ innodb_file_per_table=1
 [mysqld_safe]   
 log-error=/usr/local/Percona-Server-5.6.15-rel63.0-519-static-openssl-1.0.1e.Linux.x86_64/var/log/mysqld.log   
 pid-file=/usr/local/Percona-Server-5.6.15-rel63.0-519-static-openssl-1.0.1e.Linux.x86_64/var/run/mysqld/mysqld.pid   
-ÒÔÉÏmy.cnfÎª¼òµ¥µÄ²ÎÊıÅäÖÃ£¬ºóÆÚ»¹ĞèÒª¶Ô´Ë½øĞĞµ÷Õû   
+```
+ä»¥ä¸Šmy.cnfä¸ºç®€å•çš„å‚æ•°é…ç½®ï¼ŒåæœŸè¿˜éœ€è¦å¯¹æ­¤è¿›è¡Œè°ƒæ•´
+```
 #mkdir  -p  /usr/local/Percona-Server-5.6.15-rel63.0-519-static-openssl-1.0.1e.Linux.x86_64/var/run   
 #mkdir  -p  /usr/local/Percona-Server-5.6.15-rel63.0-519-static-openssl-1.0.1e.Linux.x86_64/var/log   
-³õÊ¼»¯mysql   
+```
+#åˆå§‹åŒ–mysql 
+```
 #mkdir  /opt/bak   
 #mv  /etc/my.cnf  /opt/bak   
 #./scripts/mysql_install_db  \   
@@ -47,8 +64,10 @@ pid-file=/usr/local/Percona-Server-5.6.15-rel63.0-519-static-openssl-1.0.1e.Linu
 #./bin/mysqld_safe  &   
 #chkconfig  mysqld  on   
 #/etc/init.d/mysqld   start   
-   
-ÅäÖÃ»·¾³±äÁ¿   
+```  
+#é…ç½®ç¯å¢ƒå˜é‡ 
+```
 #vim  ~/.bash_profile    
-PATH=PATH:HOME/bin:/usr/local/Percona-Server-5.6.15-rel63.0-519-static-openssl-1.0.1e.Linux.x86_64/bin   
+PATH=PATH:HOME/bin:/usr/local/Percona-Server-5.6.15-rel63.0-519-static-openssl-1.0.1e.Linux.x86_64/bin  
+```
    
