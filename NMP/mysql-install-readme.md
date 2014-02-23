@@ -53,7 +53,9 @@ pid-file=/usr/local/Percona-Server-5.6.15-rel63.0-519-static-openssl-1.0.1e.Linu
 ```
 #mkdir  -p  /usr/local/Percona-Server-5.6.15-rel63.0-519-static-openssl-1.0.1e.Linux.x86_64/var/run   
 #mkdir  -p  /usr/local/Percona-Server-5.6.15-rel63.0-519-static-openssl-1.0.1e.Linux.x86_64/var/log   
-初始化mysql   
+```
+#初始化mysql   
+```
 #mkdir  /opt/bak   
 #mv  /etc/my.cnf  /opt/bak   
 #./scripts/mysql_install_db  \   
@@ -61,6 +63,9 @@ pid-file=/usr/local/Percona-Server-5.6.15-rel63.0-519-static-openssl-1.0.1e.Linu
 --basedir=/usr/local/Percona-Server-5.6.15-rel63.0-519-static-openssl-1.0.1e.Linux.x86_64/   \   
 --datadir=/usr/local/Percona-Server-5.6.15-rel63.0-519-static-openssl-1.0.1e.Linux.x86_64/data/   
 #./bin/mysqld_safe  &   
+```
+#启动服务
+```
 #chkconfig  mysqld  on   
 #/etc/init.d/mysqld   start   
 ```   
