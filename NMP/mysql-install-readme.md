@@ -1,12 +1,12 @@
-#Percona-Server数据库的二进制安装方法
+﻿#Percona-Server数据库的二进制安装方法
 
 #下载文件
 ```
 #wget http://www.percona.com/redir/downloads/Percona-Server-5.6/LATEST/binary/linux/x86_64/Percona-Server-5.6.15-rel63.0-519-static-openssl-1.0.1e.Linux.x86_64.tar.gz   
-# tar  xf  Percona-Server-5.6.15-rel63.0-519-static-openssl-1.0.1e.Linux.x86_64.tar.gz   
-# mv  Percona-Server-5.6.15-rel63.0-519-static-openssl-1.0.1e.Linux.x86_64  /usr/local/    
+#tar  xf  Percona-Server-5.6.15-rel63.0-519-static-openssl-1.0.1e.Linux.x86_64.tar.gz   
+#mv  Percona-Server-5.6.15-rel63.0-519-static-openssl-1.0.1e.Linux.x86_64  /usr/local/    
 #cd  /usr/local/Percona-Server-5.6.15-rel63.0-519-static-openssl-1.0.1e.Linux.x86_64/   
-# cp  support-files/mysql.server  /etc/init.d/mysqld   
+#cp  support-files/mysql.server  /etc/init.d/mysqld   
 ```
 #建立用户   
 ```
@@ -16,6 +16,11 @@
 #改变权限   
 ```
 #chown -R  mysql.mysql /usr/local/Percona-Server-5.6.15-rel63.0-519-static-openssl-1.0.1e.Linux.x86_64/   
+```
+#配置环境变量 
+```
+#vim  ~/.bash_profile    
+PATH=PATH:HOME/bin:/usr/local/Percona-Server-5.6.15-rel63.0-519-static-openssl-1.0.1e.Linux.x86_64/bin  
 ```
 提示：如果路径不为/usr/local，则需要修改启动脚本/etc/init.d/mysqld   
 #启动percona-server服务   
@@ -34,7 +39,7 @@ my.cnf将会存在于以下路径，依次为优先级匹配。
 ``` 
 #配置my.cnf文件
 ```
-# cat /usr/local/Percona-Server-5.6.15-rel63.0-519-static-openssl-1.0.1e.Linux.x86_64/my.cnf    
+# cat /usr/local/Percona-Server-5.6.15-rel63.0-519-static-openssl-1.0.1e.Linux.x86_64/etc/my.cnf    
 [mysqld]   
 datadir=/usr/local/Percona-Server-5.6.15-rel63.0-519-static-openssl-1.0.1e.Linux.x86_64/data   
 socket=/usr/local/Percona-Server-5.6.15-rel63.0-519-static-openssl-1.0.1e.Linux.x86_64/var/run/mysql.sock   
@@ -52,6 +57,7 @@ pid-file=/usr/local/Percona-Server-5.6.15-rel63.0-519-static-openssl-1.0.1e.Linu
 ```
 #mkdir  -p  /usr/local/Percona-Server-5.6.15-rel63.0-519-static-openssl-1.0.1e.Linux.x86_64/var/run   
 #mkdir  -p  /usr/local/Percona-Server-5.6.15-rel63.0-519-static-openssl-1.0.1e.Linux.x86_64/var/log   
+#mkdir  -p  /usr/local/Percona-Server-5.6.15-rel63.0-519-static-openssl-1.0.1e.Linux.x86_64/etc  
 ```
 #初始化mysql 
 ```
@@ -62,12 +68,14 @@ pid-file=/usr/local/Percona-Server-5.6.15-rel63.0-519-static-openssl-1.0.1e.Linu
 --basedir=/usr/local/Percona-Server-5.6.15-rel63.0-519-static-openssl-1.0.1e.Linux.x86_64/   \   
 --datadir=/usr/local/Percona-Server-5.6.15-rel63.0-519-static-openssl-1.0.1e.Linux.x86_64/data/   
 #./bin/mysqld_safe  &   
+
+#改变权限   
+```
+#chown -R  mysql.mysql /usr/local/Percona-Server-5.6.15-rel63.0-519-static-openssl-1.0.1e.Linux.x86_64/   
+```
+
 #chkconfig  mysqld  on   
 #/etc/init.d/mysqld   start   
 ```  
-#配置环境变量 
-```
-#vim  ~/.bash_profile    
-PATH=PATH:HOME/bin:/usr/local/Percona-Server-5.6.15-rel63.0-519-static-openssl-1.0.1e.Linux.x86_64/bin  
-```
+
    
