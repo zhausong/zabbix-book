@@ -1,27 +1,29 @@
-1.°²×°oracleµÄ¿Í»§¶ËÈí¼þ°ü
+1.ï¿½ï¿½×°oracleï¿½Ä¿Í»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 rpm  -ivh  oracle-instantclient11.2-basic-11.2.0.3.0-1.x86_64.rpm
 rpm  -ivh  oracle-instantclient11.2-devel-11.2.0.3.0-1.x86_64.rpm
 rpm  -ivh  oracle-instantclient11.2-sqlplus-11.2.0.3.0-1.x86_64.rpm
 rpm  -ivh  cx_Oracle-5.1.2-11g-py26-1.x86_64.rpm
 rpm  -ivh  python-argparse-1.2.1-2.el6.noarch.rpm
 
-2.¿âÎÄ¼þÂ·¾¶
-#vim /etc/ld.so.conf.d/oracle.conf #Ìí¼ÓÈçÏÂÄÚÈÝ
+2.ï¿½ï¿½ï¿½Ä¼ï¿½Â·ï¿½ï¿½
+#vim /etc/ld.so.conf.d/oracle.conf #ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 /usr/lib/oracle/11.2/client64/lib
 #ldconfig -v
 
-3.½Å±¾ÅäÖÃÎÄ¼þ
+3.ï¿½Å±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½
 #cp  pyora.py /etc/zabbix/scripts/pyora.py
 #cp  py_oracle.conf /etc/zabbix/zabbix_agentd.conf.d/oracle.conf
 
-4.webµ¼ÈëxmlÎÄ¼þORACLE_zbx_templates.xml
-hostÀïÃæÉèÖÃºê±äÁ¿
+4.webï¿½ï¿½ï¿½ï¿½xmlï¿½Ä¼ï¿½ORACLE_zbx_templates.xml
+hostï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ãºï¿½ï¿½ï¿½ï¿½ï¿½
 Macro	 	Value	 
 {$ADDRESS}    192.168.153.153
 {$ARCHIVE}    VGDATA
 {$DATABASE}   clouddb
 {$PASSWORD}   123456
 {$USERNAME}   testuser
+
+å‡ºè‡ªhttp://bicofino.io/blog/2013/12/09/monitoring-oracle-with-zabbix/
 
 
 
