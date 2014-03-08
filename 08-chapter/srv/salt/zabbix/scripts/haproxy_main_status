@@ -1,0 +1,191 @@
+#!/bin/bash
+# Script to fetch haproxy statuses for tribily monitoring systems
+# Author: krish@tribily.com
+# License: GPLv2
+
+# Set Variables
+IPADDR="www.itnihao.com"
+PORT="80"
+DATE=`date +%Y%m%d`
+#http://www.itnihao.com/backend/haproxy-stats;csv
+cd /tmp/
+wget --http-user=itnihao --http-password=itnihao $IPADDR:$PORT/backend/haproxy-stats\;csv -O haproxy_stats_$DATE.main.csv -o /dev/null
+FILE="/tmp/haproxy_stats_$DATE.main.csv"
+
+# Write the functions
+
+# Status of Servers
+function fend_status {
+        grep "$1," $FILE | grep FRONTEND | cut -f18 -d,
+        }       
+function bend_status {
+        grep "$1," $FILE | grep BACKEND | cut -f18 -d,
+        }       
+
+# Queue Informations
+function bend_qcur {
+        grep "$1," $FILE | grep BACKEND | cut -f3 -d,
+        }
+function bend_qmax {
+        grep "$1," $FILE | grep BACKEND | cut -f4 -d,
+        }
+
+# Session Informations
+function fend_scur {
+        grep "$1," $FILE | grep FRONTEND | cut -f5 -d,
+        }
+function fend_smax {
+        grep "$1," $FILE | grep FRONTEND | cut -f6 -d,
+        }
+function bend_scur {
+        grep "$1," $FILE | grep BACKEND | cut -f5 -d,
+        }
+function bend_smax {
+        grep "$1," $FILE | grep BACKEND | cut -f6 -d,
+        }
+function fend_stot {
+        grep "$1," $FILE | grep FRONTEND | cut -f8 -d,
+        }
+function bend_stot {
+        grep "$1," $FILE | grep BACKEND | cut -f8 -d,
+        }
+# Traffic Information
+function fend_bytes_in {
+        grep "$1," $FILE | grep FRONTEND | cut -f9 -d,
+        }
+function fend_bytes_out {
+        grep "$1," $FILE | grep FRONTEND | cut -f10 -d,
+        }
+function bend_bytes_in {
+        grep "$1," $FILE | grep BACKEND | cut -f9 -d,
+        }
+function bend_bytes_out {
+        grep "$1," $FILE | grep BACKEND | cut -f10 -d,
+        }
+
+# Error Information
+function fend_err_req {
+        grep "$1," $FILE | grep FRONTEND | cut -f13 -d,
+        }
+function bend_err_conn {
+        grep "$1," $FILE | grep BACKEND | cut -f14 -d,
+        }
+function bend_err_resp {
+        grep "$1," $FILE | grep BACKEND | cut -f15 -d,
+        }
+# Warning Information
+function bend_warn_retr {
+        grep "$1," $FILE | grep BACKEND | cut -f16 -d,
+        }
+function bend_warn_redis {
+        grep "$1," $FILE | grep BACKEND | cut -f17 -d,
+        }
+# Downtime Information
+function bend_down_cur {
+        STATUS=$(grep "$1," $FILE | grep BACKEND | cut -f18 -d,)
+        if [ "$STATUS" == "DOWN" ]
+        then
+                grep "$1," $FILE | grep BACKEND | cut -f24 -d,
+        else
+                echo "0"
+        fi
+        }
+function bend_down_tot {
+        grep "$1," $FILE | grep BACKEND | cut -f25 -d,
+        }
+
+# Uptime Information
+function bend_uptime_cur {
+        STATUS=`grep "$1," $FILE | grep BACKEND | cut -f18 -d,`
+        if [ "$STATUS" == "UP" ]
+        then
+                grep "$1," $FILE | grep BACKEND | cut -f24 -d,
+        else
+                echo "0"
+        fi
+        }
+
+# Version Information
+# Donot edit this section ever
+function tribily_ver {
+	VERSION="1.0"
+	echo ${VERSION}
+}
+	
+
+
+# Run the requested function
+case "$1" in 
+fend_status)
+fend_status $2
+;;
+bend_status)
+bend_status $2
+;;
+bend_qcur)
+bend_qcur $2
+;;
+bend_qmax)
+bend_qmax $2
+;;
+fend_scur)
+fend_scur $2
+;;
+fend_smax)
+fend_smax $2
+;;
+bend_scur)
+bend_scur $2
+;;
+bend_smax)
+bend_smax $2
+;;
+fend_stot)
+fend_stot $2
+;;
+bend_stot)
+bend_stot $2
+;;
+fend_bytes_in)
+fend_bytes_in $2
+;;
+fend_bytes_out)
+fend_bytes_out $2
+;;
+bend_bytes_in)
+bend_bytes_in $2
+;;
+bend_bytes_out)
+bend_bytes_out $2
+;;
+fend_err_req)
+fend_err_req $2
+;;
+bend_err_conn)
+bend_err_conn $2
+;;
+bend_err_resp)
+bend_err_resp $2
+;;
+bend_warn_retr)
+bend_warn_retr $2
+;;
+bend_warn_redis)
+bend_warn_redis $2
+;;
+bend_down_cur)
+bend_down_cur $2
+;;
+bend_down_tot)
+bend_down_tot $2
+;;
+bend_uptime_cur)
+bend_uptime_cur $2
+;;
+*)
+echo "Useage $0 {fend_status|bend_status|bend_qcur|bend_qmax|fend_scur|fend_smax|bend_scur|bend_smax|fend_stot|bend_stot|fend_bytes_in|fend_bytes_out|bend_bytes_in|bend_bytes_out|fend_err_req|bend_err_conn|bend_err_resp|bend_warn_retr|bend_warn_redis|bend_down_cur|bend_down_tot|bend_uptime_cur} "
+;;
+esac
+# Clean up
+#/bin/rm $FILE
+

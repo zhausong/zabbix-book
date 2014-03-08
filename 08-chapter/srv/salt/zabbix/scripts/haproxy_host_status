@@ -1,0 +1,149 @@
+#!/bin/bash
+# Script to fetch haproxy statuses for tribily monitoring systems
+# Author: krish@tribily.com
+# License: GPLv2
+
+# Set Variables
+IPADDR="www.itnihao.com"
+PORT="80"
+DATE=`date +%Y%m%d`
+#http://www.itnihao.com/backend/haproxy-stats;csv
+cd /tmp/
+wget --http-user=itnihao --http-password=itnihao $IPADDR:$PORT/backend/haproxy-stats\;csv -O haproxy_stats_$DATE.host.csv -o /dev/null
+FILE="/tmp/haproxy_stats_$DATE.host.csv"
+
+# Write the functions
+
+# Status of Servers
+function host_status {
+        grep "$1," $FILE | cut -f18 -d,|sort|uniq
+        }       
+
+# Queue Informations
+function host_qcur {
+        grep "$1," $FILE | cut -f3 -d,|awk 'BEGIN{total=0}{total=total+$1}END{print  total }'
+        }
+function host_qmax {
+        grep "$1," $FILE | cut -f4 -d,|awk 'BEGIN{total=0}{total=total+$1}END{print  total }'
+        }
+
+# Session Informations
+function host_scur {
+        grep "$1," $FILE |  cut -f5 -d,|awk 'BEGIN{total=0}{total=total+$1}END{print  total }'
+        }
+function host_smax {
+        grep "$1," $FILE |  cut -f6 -d,|awk 'BEGIN{total=0}{total=total+$1}END{print  total }'
+        }
+function host_stot {
+        grep "$1," $FILE |  cut -f8 -d,|awk 'BEGIN{total=0}{total=total+$1}END{print  total }'
+        }
+# Traffic Information
+function host_bytes_in {
+        grep "$1," $FILE | cut -f9 -d,|awk 'BEGIN{total=0}{total=total+$1}END{print  total }'
+        }
+function host_bytes_out {
+        grep "$1," $FILE | cut -f10 -d,|awk 'BEGIN{total=0}{total=total+$1}END{print  total }'
+        }
+
+# Error Information
+function host_err_conn {
+        grep "$1," $FILE | cut -f14 -d,|awk 'BEGIN{total=0}{total=total+$1}END{print  total }'
+        }
+function host_err_resp {
+        grep "$1," $FILE | cut -f15 -d,|awk 'BEGIN{total=0}{total=total+$1}END{print  total }'
+        }
+# Warning Information
+function host_warn_retr {
+        grep "$1," $FILE | cut -f16 -d,|awk 'BEGIN{total=0}{total=total+$1}END{print  total }'
+        }
+function host_warn_redis {
+        grep "$1," $FILE | cut -f17 -d,|awk 'BEGIN{total=0}{total=total+$1}END{print  total }'
+        }
+# Downtime Information
+function host_down_cur {
+        STATUS=$(grep "$1," $FILE | cut -f18 -d,|sort|uniq)
+        if [ "$STATUS" == "DOWN" ]
+        then
+                grep "$1," $FILE | cut -f24 -d,|sort|uniq
+        else
+                echo "0"
+        fi
+        }
+function host_down_tot {
+        grep "$1," $FILE | cut -f25 -d,|awk 'BEGIN{total=0}{total=total+$1}END{print  total }'
+        }
+
+# Uptime Information
+function host_uptime_cur {
+        STATUS=`grep "$1," $FILE | cut -f18 -d,`|sort|uniq
+        if [ "$STATUS" == "UP" ]
+        then
+                grep "$1," $FILE | cut -f24 -d,|awk 'BEGIN{total=0}{total=total+$1}END{print  total }'
+        else
+                echo "0"
+        fi
+        }
+
+# Version Information
+# Donot edit this section ever
+function tribily_ver {
+	VERSION="1.0"
+	echo ${VERSION}
+}
+	
+
+
+# Run the requested function
+case "$1" in 
+host_status)
+host_status $2
+;;
+host_qcur)
+host_qcur $2
+;;
+host_qmax)
+host_qmax $2
+;;
+host_scur)
+host_scur $2
+;;
+host_smax)
+host_smax $2
+;;
+host_stot)
+host_stot $2
+;;
+host_bytes_in)
+host_bytes_in $2
+;;
+host_bytes_out)
+host_bytes_out $2
+;;
+host_err_conn)
+host_err_conn $2
+;;
+host_err_resp)
+host_err_resp $2
+;;
+host_warn_retr)
+host_warn_retr $2
+;;
+host_warn_redis)
+host_warn_redis $2
+;;
+host_down_cur)
+host_down_cur $2
+;;
+host_down_tot)
+host_down_tot $2
+;;
+host_uptime_cur)
+host_uptime_cur $2
+;;
+*)
+echo "Useage $0 {host_status|host_qcur|host_qmax|host_scur|host_smax|host_stot|host_bytes_in|host_bytes_out|host_err_conn|host_err_resp|host_warn_retr|host_warn_redis|host_down_cur|host_down_tot|host_uptime_cur} "
+;;
+esac
+# Clean up
+#/bin/rm $FILE
+

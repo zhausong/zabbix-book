@@ -1,0 +1,112 @@
+#!/bin/bash
+
+# function:monitor nginx  from zabbix
+# License: GPL
+# mail:admin@itnihao.com
+# version 1.0 date:2012-12-09
+# version 1.0 date:2013-01-15
+
+
+#nginx.confÅäÖÃÈçÏÂ
+######################################################################
+#   server {
+#        listen 127.0.0.1:80;
+#        server_name 127.0.0.1;
+#        location /nginxstatus {
+#                 stub_status on;
+#                 access_log off;
+#                 allow 127.0.0.1;
+#                 allow 192.168.11.0/24;
+#                 deny all;        
+#        }
+#        location ~ ^/(phpfpmstatus)$ {
+#                 include fastcgi_params;
+#                 fastcgi_pass unix:/tmp/fpm.sock;
+#                 fastcgi_param SCRIPT_FILENAME $fastcgi_script_name;
+#        }
+#    }
+######################################################################
+
+#HOST=$(ifconfig eth0 | sed -n '/inet /{s/.*addr://;s/ .*//;p}')
+#PORT="80"
+
+source /etc/bashrc >/dev/null 2>&1
+source /etc/profile  >/dev/null 2>&1
+nginx_conf_path=/etc/nginx/nginx.conf
+
+nginx_site_dicovery() {
+NGX_WEB_SITE=($(awk  '/server_name / {print $2}' ${nginx_conf_path}|sed "s/;//"))
+[ ${#NGX_WEB_SITE[@]} == 0 ]  && echo "" && exit 1
+
+        printf '{\n'
+        printf '\t"data":[\n'
+for((i=0;i<${#NGX_WEB_SITE[@]};++i))
+{
+        num=$(echo $((${#NGX_WEB_SITE[@]}-1)))
+        if [ "$i" != ${num} ];
+        then
+                printf "\t\t{ \n"
+                printf "\t\t\t\"{#NGX_SITE_NAME}\":\"${NGX_WEB_SITE[$i]}\"},\n"
+        else
+                printf  "\t\t{ \n"
+                printf  "\t\t\t\"{#NGX_SITE_NAME}\":\"${NGX_WEB_SITE[$num]}\"}]}\n"
+        fi
+}
+}
+
+
+# Functions to return nginx stats
+function active {
+                curl "http://$1/nginxstatus" | grep 'Active' | awk '{print $3}'
+}
+function reading {
+                curl "http://$1/nginxstatus" | grep 'Reading' | awk '{print $2}'
+}
+function writing {
+                curl "http://$1/nginxstatus" | grep 'Writing' | awk '{print $4}'
+}
+function waiting {
+                curl "http://$1/nginxstatus" | grep 'Waiting' | awk '{print $6}'
+}
+function accepts {
+                curl "http://$1/nginxstatus" | awk NR==3 | awk '{print $1}'
+}
+function handled {
+                curl "http://$1/nginxstatus" | awk NR==3 | awk '{print $2}'
+}
+function requests {
+                curl "http://$1/nginxstatus" | awk NR==3 | awk '{print $3}'
+}
+
+
+
+case "$1" in
+nginx_site_dicovery)
+nginx_site_dicovery
+;;
+active)
+active $2
+;;
+reading)
+reading $2
+;;
+writing)
+writing $2
+;;
+waiting)
+waiting $2
+;;
+accepts)
+accepts $2
+;;
+handled)
+handled $2
+;;
+requests)
+requests $2
+;;
+*)
+ echo "Usage: $0 {nginx_site_dicovery}"
+ echo "Usage: $0 {active [host]|reading [host]|writing [host]|waiting [host]|accepts [host]|handled [host]|requests [host]}"
+esac
+	

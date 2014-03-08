@@ -1,0 +1,55 @@
+#!/bin/bash
+# function:monitor lvs connect status from zabbix
+# License: GPL
+# mail:admin@itnihao.com
+# version:1.0 date:2013-01-22
+
+ActiveConn () {
+    awk '/->/ {sum+=$5} END { print sum-1}' /proc/net/ip_vs
+}
+InActConn () {
+    awk '/->/ {sum+=$6} END { print sum-1}' /proc/net/ip_vs
+}
+HostNum () {
+    LVSLOG=$(mktemp /var/log/zabbix/lvs.XXXXXX)
+    for name in $(awk  '/->/ {print $2}' /proc/net/ip_vs|sort|uniq)
+       do 
+         echo $name  | awk '{for(i=1;i<=NF;i++) $i=strtonum("0x"$i);print}' FIELDWIDTHS="2 2 2 2" OFS="."  >>${LVSLOG}
+    done
+
+    sort ${LVSLOG}|uniq|wc -l
+    rm ${LVSLOG}
+}
+VipPortNum () {
+    awk  -F" |:" '/TCP/ {print $4}' /proc/net/ip_vs|sort|uniq|wc -l
+}
+UsedHostNum () {
+    awk '/->/ && ($2 ~ "[0-9]") && ($5 !~ 0) {print $0}' /proc/net/ip_vs|wc -l
+}
+case "$1" in
+ActiveConn)
+ActiveConn
+;;
+InActConn)
+InActConn
+;;
+HostNum)
+HostNum
+;;
+VipPortNum)
+VipPortNum
+;;
+UsedHostNum)
+UsedHostNum
+;;
+*)
+echo "Usage $0 {ActiveConn|InActConn|host_num|vip_port_num}"
+esac
+
+
+
+#awk '/->/ ($2 != RemoteAddress)  {sum+=$4} END { print "Sum = ",sum}' /proc/net/ip_vs
+#echo '101.64.178.198' | awk -F'.' '{ for(i=1;i<=NF;i++){printf("%X", $i);if(i!=NF){printf("")}} }'
+#echo "6540B2C6" | awk '{for(i=1;i<=NF;i++) $i=strtonum("0x"$i);print}' FIELDWIDTHS="2 2 2 2" OFS="."
+
+

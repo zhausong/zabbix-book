@@ -1,0 +1,83 @@
+#!/bin/bash
+
+# function:monitor tcp connect status from zabbix
+# License: GPL
+# mail:itnihao@163.com
+# version:1.0 date:2013-01-17
+source /etc/bashrc >/dev/null 2>&1
+source /etc/profile  >/dev/null 2>&1
+
+IPADDR="www.itnihao.com"
+PORT="80"
+DATE=`date +%Y%m%d`
+cd /tmp/
+wget --http-user=itnihao --http-password=itnihao $IPADDR:$PORT/backend/haproxy-stats\;csv -O haproxy_stats_$DATE.discovery.csv -o /dev/null
+FILE="/tmp/haproxy_stats_$DATE.discovery.csv"
+
+haproxy_front_discovery () {
+FRONTEND=($(awk -F"," '/FRONTEND/  {print $1}' ${FILE}))
+        printf '{\n'
+        printf '\t"data":[\n'
+for((i=0;i<${#FRONTEND[@]};++i))
+{
+        num=$(echo $((${#FRONTEND[@]}-1)))
+        if [ "$i" != ${num} ];
+                then
+        printf "\t\t{ \n"
+        printf "\t\t\t\"{#FRONTEND}\":\"${FRONTEND[$i]}\"},\n"
+                else
+                        printf  "\t\t{ \n"
+                        printf  "\t\t\t\"{#FRONTEND}\":\"${FRONTEND[$num]}\"}]}\n"
+        fi
+}
+}
+
+haproxy_backend_discovery () {
+BACKEND=($(awk -F"," '/BACKEND/  {print $1}' ${FILE}))
+        printf '{\n'
+        printf '\t"data":[\n'
+for((i=0;i<${#BACKEND[@]};++i))
+{
+        num=$(echo $((${#BACKEND[@]}-1)))
+        if [ "$i" != ${num} ];
+                then
+        printf "\t\t{ \n"
+        printf "\t\t\t\"{#BACKEND}\":\"${BACKEND[$i]}\"},\n"
+                else
+                        printf  "\t\t{ \n"
+                        printf  "\t\t\t\"{#BACKEND}\":\"${BACKEND[$num]}\"}]}\n"
+        fi
+}
+}
+haproxy_backendhost_discovery () {
+BACKENDHOST=($(awk -F","  '($2 !~ /BACKEND|FRONTEND/ && $1 !~ /#/) {print $2}' ${FILE}|sort|uniq))
+printf '{\n'
+        printf '\t"data":[\n'
+for((i=0;i<${#BACKENDHOST[@]};++i))
+{
+        num=$(echo $((${#BACKENDHOST[@]}-1)))
+        if [ "$i" != ${num} ];
+                then
+        printf "\t\t{ \n"
+        printf "\t\t\t\"{#BACKENDHOST}\":\"${BACKENDHOST[$i]}\"},\n"
+                else
+                        printf  "\t\t{ \n"
+                        printf  "\t\t\t\"{#BACKENDHOST}\":\"${BACKENDHOST[$num]}\"}]}\n"
+        fi
+}
+}
+
+case "$1" in
+haproxy_front_discovery)
+haproxy_front_discovery
+;;
+haproxy_backend_discovery)
+haproxy_backend_discovery
+;;
+haproxy_backendhost_discovery)
+haproxy_backendhost_discovery
+;;
+*)
+echo "Usage:$0 {haproxy_front_discovery|haproxy_backend_discovery|haproxy_backendhost_discovery}"
+;;
+esac
