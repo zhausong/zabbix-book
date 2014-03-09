@@ -56,6 +56,7 @@ def logwrite(sendstatus,mail_to,content):
     daytime=t.strftime('%Y-%m-%d')
     daylogfile=logpath+'/'+str(daytime)+'.log'
     logging.basicConfig(filename=daylogfile,level=logging.DEBUG)
+    os.system('chown zabbix.zabbix {0}'.format(daylogfile))
     logging.info('*'*130)
     logging.debug(str(t)+' mail send to {0},content is :\n {1}'.format(mail_to,content))
 
