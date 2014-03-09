@@ -1,5 +1,8 @@
 #!/usr/bin/python 
 #coding:utf-8 
+#author: itnihao
+#mail: itnihao@qq.com
+#url: https://github.com/itnihao/zabbix-book/05-chapter
  
 import smtplib 
 from email.mime.text import MIMEText 
