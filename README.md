@@ -66,7 +66,8 @@ zabbix monitor file
    6.7告警升级的机制	    
    6.8告警配置故障排查	    
    
-=第二部分，zabbix中级部分	    
+第二部分，zabbix中级部分	    
+=
 第七章，监控方式剖析	    
    7.1 Zabbix支持的监控方式	    
    7.2 Zabbix监控方式的逻辑	    
@@ -105,7 +106,8 @@ zabbix monitor file
    11.9 hadoop监控	    
    11.10 更多监控	    
    
-=第三部分Zabbix高级部分	    
+第三部分Zabbix高级部分
+=
 第十二章，性能优化	    
    12.1Zabbix的性能优化的概述	    
    12.2Zabbix的性能优化的依据	    
@@ -131,7 +133,8 @@ zabbix monitor file
    16.4业务相关的配置	    
    16.5其他需求   
    
-=第四部分 附录	    
+第四部分 附录	    
+=
 第十七章，源码安装及相关配置	    
    17.1安装zabbix-server	    
    17.2 Zabbix-agent的安装	    
