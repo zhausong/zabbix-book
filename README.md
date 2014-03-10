@@ -4,7 +4,8 @@ zabbix-book
 zabbix monitor file    
 本项目是《Zabbix分布式监控系统运维》一书的附录部分，本书目录如下：
 
-=第一部分Zabbix基础
+第一部分Zabbix基础
+=
 第一章，监控系统简介    
    1.1为何需要监控系统     
    1.2监控系统的实现 
