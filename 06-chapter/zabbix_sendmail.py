@@ -2,7 +2,7 @@
 #coding:utf-8 
 #author: itnihao
 #mail: itnihao@qq.com
-#url: https://github.com/itnihao/zabbix-book/05-chapter
+#url: https://github.com/itnihao/zabbix-book/edit/master/06-chapter/zabbix_sendmail.py
  
 import smtplib 
 from email.mime.text import MIMEText 
