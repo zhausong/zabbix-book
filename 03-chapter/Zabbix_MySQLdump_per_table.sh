@@ -2,6 +2,7 @@
 #author: itnihao
 #mail: itnihao@qq.com
 #http://wwww.itnihao.com
+#https://github.com/itnihao/zabbix-book/blob/master/03-chapter/Zabbix_MySQLdump_per_table.sh
 
 source /etc/bashrc
 source /etc/profile
