@@ -37,11 +37,10 @@ zabbix monitor file
    3.6 其他平台的安装	    
    3.7 zabbix_get的使用	    
    3.8 zabbix术语（命令）相关	    
-   3.9 Zabbix-server对数据的存储	    
-   3.10 Zabbix init脚本解释	    
-   3.11服务的高可用	    
-   3.12关于安全的考虑	    
-   3.13 禁用zabbix的重新安装	
+   3.9 Zabbix-server对数据的存储	      
+   3.10 Zabbix init脚本解释    	    
+   3.11安全和高可用    	    
+   3.12zabbix数据库的备份     	
 ```
 第四章，快速配置使用	    
 ==
@@ -164,7 +163,10 @@ zabbix monitor file
 第十四章，使用Zabbix协议	    
 ==
 ```
-   14.1 Zabbix sender协议	    
+   14.1 Zabbix协议概述
+   14.2 Zabbix sender协议
+   14.2 Zabbix get协议
+   14.2 Zabbix agent协议
 ```
 第十五章，定制Zabbix安装包	    
 ==
