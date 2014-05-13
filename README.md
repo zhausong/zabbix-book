@@ -193,3 +193,10 @@ zabbix monitor file
    17.2 Zabbix-agent的安装	    
    17.3 关于zabbix的升级	    
 ```
+
+借此页面，介绍下Zabbix国内的QQ群：   
+zabbix交流群：          92242469 （满员）   
+zabbix交流2群：         216490997   
+Zabbix系统/运维/研发：  93287482   
+zabbix高级技术群：      142279493（满员）  
+ZABBIX中文论坛：        62239409  
