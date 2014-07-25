@@ -194,9 +194,16 @@ zabbix monitor file
    17.3 关于zabbix的升级	    
 ```
 
-借此页面，介绍下Zabbix国内的QQ群：   
+==
+本书的读者QQ群：
+==
+zabbix企业级分布式监控 271659981 （可申请加入，验证码：Zabbix监控）
+
+
+其他Zabbix国内的QQ群：   
 zabbix交流群：          92242469 （满员）   
-zabbix交流2群：         216490997   
-Zabbix系统/运维/研发：  93287482   
+zabbix交流2群：         216490997（满员）  
 zabbix高级技术群：      142279493（满员）  
+Zabbix系统/运维/研发：  93287482 
 ZABBIX中文论坛：        62239409  
+
