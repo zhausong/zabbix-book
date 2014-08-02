@@ -1,0 +1,25 @@
+#!/usr/bin/env python
+# coding=utf8
+# Last modified: 2013-04-12 14:47 # Author: itnihao
+# Mail: itnihao@qq.com
+import os 
+import json
+r=open('/proc/mounts','r').read().split("\n")
+devices = []
+for i in r:
+    if len(i) > 0:
+        d=i.split()
+        print d
+        result=d[1].find('chroot')
+        print d[1]
+        if result != 0:
+            devices += [{"{#FSNAME}":d[1],"{#FSTYPE}":d[2]}]
+#for devpath in r:
+#    device = os.path.basename(devpath)
+#    devices += [{'{#SITENAME}':device}]
+
+#print json.dumps({'data':devices},sort_keys=True,indent=7,separators=(',',':'))
+
+
+
+#{"{#FSNAME}":"\/var\/named\/chroot\/etc\/named.root.key","{#FSTYPE}":"ext4"}
