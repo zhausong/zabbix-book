@@ -1,3 +1,5 @@
+#解决的问题
+  Zabbix对文件系统的监控，是通过LLD来自动添加实现的，在通过Zabbix监控bind服务器的文件系统时，当bind启用了chroot，会把chroot的目录给监控上，但这个目录是虚拟的，不具备参考意义，所以需要重新定义LLD的规则
 #用法
 ###脚本的存放位置
 ```
@@ -18,7 +20,7 @@ shell# tree /etc/zabbix/
 ##创建Item prototypes
 ![图1](img/000-0.png)
 ###
-  Zabbix监控bind服务器的文件系统，当bind启用了chroot，会把chroot的目录给监控上，但这个目录是虚拟的，不具备参考意义
+
 ###
 现在，我们有个需求，就是要去掉对bind-chroot目录的监控,即以下的目录
 ```
