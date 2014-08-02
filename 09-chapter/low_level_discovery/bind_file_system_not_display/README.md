@@ -12,11 +12,11 @@ shell# tree /etc/zabbix/
     └── userparameter_mysql.conf
 ```
 如图所示
-![图1](img/000-0.png)
+![图1](img/000-2.png)
 ##创建Discovery rule   
 ![图1](img/000-1.png)
 ##创建Item prototypes
-![图1](img/000-2.png)
+![图1](img/000-0.png)
 ###
   Zabbix监控bind服务器的文件系统，当bind启用了chroot，会把chroot的目录给监控上，但这个目录是虚拟的，不具备参考意义
 ###
