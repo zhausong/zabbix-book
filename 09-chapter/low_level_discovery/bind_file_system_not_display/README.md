@@ -1,5 +1,5 @@
 ###
-Mounted filesystem discovery: Free disk space on /var/named/chroot/etc/rndc.key	 	vfs.fs.size[/var/named/chroot/etc/rndc.key,free]
+  Zabbix监控bind服务器的文件系统，当bind启用了chroot，会把chroot的目录给监控上，这个目录因为是虚拟的，不具备参考意义
 ###
 
 ![图1](img/001.png)
@@ -10,6 +10,9 @@ Mounted filesystem discovery: Free disk space on /var/named/chroot/etc/rndc.key	
 
 ![图3](img/003.png)
 
+
+###从代码分析
+shell#vim zabbix-2.2.4/src/libs/zbxsysinfo/linux/diskspace.c
 int     VFS_FS_DISCOVERY(AGENT_REQUEST *request, AGENT_RESULT *result)
 {       
         int             ret = SYSINFO_RET_FAIL;
