@@ -1,7 +1,25 @@
+#用法
+###脚本的存放位置
+```
+shell# tree /etc/zabbix/
+/etc/zabbix/
+├── scripts
+│   ├── \
+│   └── fileSystemDiscoveryNotBind.py     #权限775
+├── zabbix_agentd.conf
+└── zabbix_agentd.d
+    ├── fileSystemDiscoveryNotBind.conf
+    └── userparameter_mysql.conf
+```
+如图所示
+![图1](img/000-0.png)
+##创建Discovery rule   
+![图1](img/000-1.png)
+##创建Item prototypes
+![图1](img/000-2.png)
 ###
-  Zabbix监控bind服务器的文件系统，当bind启用了chroot，会把chroot的目录给监控上，这个目录因为是虚拟的，不具备参考意义
+  Zabbix监控bind服务器的文件系统，当bind启用了chroot，会把chroot的目录给监控上，但这个目录是虚拟的，不具备参考意义
 ###
-通过low level discovery发现的文件系统中，包括bind-chroot的目录，而这些目录不具备实际的意义。
 现在，我们有个需求，就是要去掉对bind-chroot目录的监控,即以下的目录
 ```
 /var/named/chroot/etc/named
