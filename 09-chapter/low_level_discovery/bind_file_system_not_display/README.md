@@ -76,6 +76,7 @@ Configration-Templates-Import-选择zbx_export_templates_not_bind_dir_LLD.xml
 ![图1](img/000-1.png)
 ###
 ##4.将模板Template OS Linux not bind dir链接到bind所在的主机
+注意：需要将Template OS Linux去掉（Unlink and clear）
 
 #现象以及原因的深度剖析
 ###
