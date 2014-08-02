@@ -21,6 +21,58 @@ shell# tree /etc/zabbix/
 ![图1](img/000-0.png)
 ###
 
+测试
+# zabbix_get -s 127.0.0.1 -k bind.vfs.fs.discovery
+```
+{
+       "data":[
+              {
+                     "{#FSNAME}":"/",
+                     "{#FSTYPE}":"rootfs"
+              },
+              {
+                     "{#FSNAME}":"/proc",
+                     "{#FSTYPE}":"proc"
+              },
+              {
+                     "{#FSNAME}":"/sys",
+                     "{#FSTYPE}":"sysfs"
+              },
+              {
+                     "{#FSNAME}":"/dev",
+                     "{#FSTYPE}":"devtmpfs"
+              },
+              {
+                     "{#FSNAME}":"/dev/pts",
+                     "{#FSTYPE}":"devpts"
+              },
+              {
+                     "{#FSNAME}":"/dev/shm",
+                     "{#FSTYPE}":"tmpfs"
+              },
+              {
+                     "{#FSNAME}":"/",
+                     "{#FSTYPE}":"ext4"
+              },
+              {
+                     "{#FSNAME}":"/proc/bus/usb",
+                     "{#FSTYPE}":"usbfs"
+              },
+              {
+                     "{#FSNAME}":"/boot",
+                     "{#FSTYPE}":"ext4"
+              },
+              {
+                     "{#FSNAME}":"/data",
+                     "{#FSTYPE}":"ext4"
+              },
+              {
+                     "{#FSNAME}":"/proc/sys/fs/binfmt_misc",
+                     "{#FSTYPE}":"binfmt_misc"
+              }
+       ]
+}
+```
 #现象以及原因的深度剖析
 ###
 现在，我们有个需求，就是要去掉对bind-chroot目录的监控,即以下的目录
