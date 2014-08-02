@@ -17,7 +17,7 @@ shell# tree /etc/zabbix/
 ![图1](img/000-2.png)
 
 ##2.测试
-# zabbix_get -s 127.0.0.1 -k bind.vfs.fs.discovery
+shell# zabbix_get -s 127.0.0.1 -k bind.vfs.fs.discovery
 ```
 {
        "data":[
