@@ -1,5 +1,7 @@
-![图1](img/001.png)
-
+.. image:: img/001.png
+--------
+.. image:: img/002.png
+--------
 ![图1](img/002.png)
 
 
