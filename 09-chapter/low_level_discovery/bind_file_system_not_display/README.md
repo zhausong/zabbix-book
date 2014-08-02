@@ -1,7 +1,7 @@
 #解决的问题
   Zabbix对文件系统的监控，是通过LLD来自动添加实现的，在通过Zabbix监控bind服务器的文件系统时，当bind启用了chroot，会把chroot的目录给监控上，但这个目录是虚拟的，不具备参考意义，所以需要重新定义LLD的规则（把原先的文件系统LLD规则停用）
 #用法
-###脚本的存放位置
+##1.脚本的存放位置
 ```
 shell# tree /etc/zabbix/
 /etc/zabbix/
@@ -15,13 +15,8 @@ shell# tree /etc/zabbix/
 ```
 如图所示
 ![图1](img/000-2.png)
-##创建Discovery rule   
-![图1](img/000-1.png)
-##创建Item prototypes
-![图1](img/000-0.png)
-###
 
-测试
+##2.测试
 # zabbix_get -s 127.0.0.1 -k bind.vfs.fs.discovery
 ```
 {
@@ -73,6 +68,15 @@ shell# tree /etc/zabbix/
        ]
 }
 ```
+##3.导入模板
+Configration-Templates-Import-选择zbx_export_templates_not_bind_dir_LLD.xml
+##创建Discovery rule （模板里面已经存在）  
+![图1](img/000-0.png)
+##创建Item prototypes （模板里面已经存在） 
+![图1](img/000-1.png)
+###
+##4.将模板Template OS Linux not bind dir链接到bind所在的主机
+
 #现象以及原因的深度剖析
 ###
 现在，我们有个需求，就是要去掉对bind-chroot目录的监控,即以下的目录
