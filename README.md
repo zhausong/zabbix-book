@@ -1,8 +1,6 @@
-===
-zabbix-book    
+===zabbix-book    
 本项目是《Zabbix企业级分布式监控系统》一书的附件部分，该书将在8月11号开始预售（目前印刷完毕）。   
-===
-本书的读者QQ群：
+===本书的读者QQ群：
 ===
 zabbix企业级分布式监控 271659981 （可申请加入，验证码：Zabbix监控），扫描加入群。
 ![图1](static/img/zabbix-QQ-group-1.jpeg)
