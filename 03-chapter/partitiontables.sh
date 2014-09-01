@@ -32,7 +32,7 @@ monthly_history_min=12
 #
 first_year=`date +"%Y"`
 last_year=$first_year
-cur_month=`date +"%m"`
+cur_month=`date +"%m"|sed 's/^0*//'`
 if [ $cur_month -eq 12 ]; then
 	last_year=$((first_year+1))
 	cur_month=1
