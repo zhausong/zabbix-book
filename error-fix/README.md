@@ -16,8 +16,8 @@ shell# service mysqld start
 shell# mysql -uroot -p
 mysql> use zabbix_proxy;
 mysql> create database zabbix_proxy character set utf8;
-mysql> grant all privileges on zabbix_proxy.* to zabbix@localh
-ost identified by 'zabbix'; mysql> flush privileges;
+mysql> grant all privileges on zabbix_proxy.* to zabbix@localhost identified by 'zabbix'; 
+mysql> flush privileges;
 ```
 @唐文军  
 P255 nginx监控脚本已经调整，见github-book 11章 fix   
