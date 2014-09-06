@@ -300,6 +300,11 @@ Zabbix企业级分布式监控 271659981 （可申请加入，验证码：Zabbix
 ```
 
 ===
+勘误列表
+===
+https://github.com/itnihao/zabbix-book/blob/master/error-fix/README.md
+
+===
 开源文档 
 ===
 《Zabbix使用手册V2.0》下载地址http://pan.baidu.com/s/1qWDHXkK  提取密码为8kq4
