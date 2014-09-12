@@ -8,6 +8,7 @@ P56  将在（16.3）节中
 P62  图web app少了下划线   
 P72 只有部分触发器（函数）  
 P124 开始部分应该概述功能，第二版增加   
+P153 表6-5 Recovery message写了两遍   @Miku酱
 P161 表6-7的Description应该为Name   @cexpert   
 P202 缺少proxy的数据同步参数，第二版增加    
 P203 创建的数据库名称应该为   
