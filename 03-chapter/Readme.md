@@ -1,3 +1,4 @@
+```
 # sh partitiontables.sh 
 Ready to partition tables.
 
@@ -69,3 +70,4 @@ to the crontab for root
 Do you want to add this to the /etc/cron.daily directory (Y/n): y
 
 Enter email of who should get the daily housekeeping reports: 
+```
