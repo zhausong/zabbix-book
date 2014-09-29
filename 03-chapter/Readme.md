@@ -5,7 +5,7 @@ Ready to partition tables.
 Ready to update permissions of Zabbix user to create routines
 
 Enter root DB user: root
-Enter root password: ele.me
+Enter root password: mysqlpassword     
 
 
 
