@@ -47,19 +47,13 @@ Because Redis does not have control over how its allocations are mapped to memor
 persistence : RDB 和 AOF 的相关信息
 
 stats : 一般统计信息
-
 replication : 主/从复制信息
-
 cpu : CPU 计算量统计信息
-
 commandstats : Redis 命令统计信息
-
 cluster : Redis 集群信息
-
 keyspace : 数据库相关的统计信息
 
 除上面给出的这些值以外，参数还可以是下面这两个：
-
 all : 返回所有信息
 default : 返回默认选择的信息
 当不带参数直接调用 INFO 命令时，使用 default 作为默认参数。
