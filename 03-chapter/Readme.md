@@ -1,10 +1,11 @@
+```
 # sh partitiontables.sh 
 Ready to partition tables.
 
 Ready to update permissions of Zabbix user to create routines
 
 Enter root DB user: root
-Enter root password: ele.me
+Enter root password: mysqlpassword     
 
 
 
@@ -69,3 +70,4 @@ to the crontab for root
 Do you want to add this to the /etc/cron.daily directory (Y/n): y
 
 Enter email of who should get the daily housekeeping reports: 
+```
