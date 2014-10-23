@@ -39,7 +39,7 @@ function checkavailable {
     code=$(curl -o /dev/null -s -w %{http_code} ${nginxstatus})
     if [ "${code}" == "200" ]
     then
-        return 0
+        return 1
     else
         echo  0
     fi
