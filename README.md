@@ -1,5 +1,12 @@
 ##《Zabbix企业级分布式监控系统》
-   本项目是《Zabbix企业级分布式监控系统》一书的附件部分，该书将在8月11号开始预售（目前印刷完毕）。   
+   本项目是《Zabbix企业级分布式监控系统》一书的附件部分，该书已发售。  
+网站名称	链接
+亚马逊	http://www.amazon.cn/3/dp/B00MN6QEYK
+china-pub	http://product.china-pub.com/4275086
+京东	http://t.cn/RPY5JtR
+当当	http://t.cn/RPHauKF
+官方收录地址	http://www.zabbix.com/documentation.php
+
    本书的读者QQ群：
 Zabbix企业级分布式监控 271659981 （可申请加入，验证码：Zabbix监控），扫描加入群。
 ![图1](static/img/zabbix-QQ-group-1.jpeg)
