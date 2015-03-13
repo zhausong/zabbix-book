@@ -31,7 +31,7 @@ WEB_SITE_discovery () {
 web_site_code () {
     for i in 1 2 3
     do
-       code=$(/usr/bin/curl -o /dev/null --connect-timeout 5 -s -w %{http_code} $1)
+       code=$(/usr/bin/curl -o /dev/null --connect-timeout 0.5 -s -w %{http_code} -A "Zabbix Web Monitor" $1)
        if [ ${code} != '000' ];then
            break
        fi
