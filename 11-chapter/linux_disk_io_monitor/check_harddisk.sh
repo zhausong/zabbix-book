@@ -5,7 +5,7 @@
 # version:1.0 date:2013-02-04
 
 diskname_discovery () {
-    HardDisk=($(grep '\b[a-z][a-z][a-z]\b'  /proc/diskstats|awk '{print $3}'))
+    HardDisk=($(grep '\b[a-z][a-z][a-z]\+\b'  /proc/diskstats|awk '{print $3}'))
     [ "${HardDisk[0]}" == "" ] && exit
     printf '{\n'
     printf '\t"data":[\n'
