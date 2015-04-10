@@ -35,5 +35,5 @@ done
 
 
 cd ${MySQL_DUMP_PATH}/
-rm -rf $(date +%Y%m%d --date='5 days ago')
+rm -rf $(date +%Y-%m-%d --date='5 days ago')
 exit 0

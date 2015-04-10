@@ -16,7 +16,7 @@ Obsoletes:      php
 
 BuildRequires: make
 BuildRequires: bzip2 >= 1.0.2-4
-BuildRequires: curl-devel >= 7.19.7
+BuildRequires: libcurl-devel >= 7.19.7
 BuildRequires: gd-devel >= 2.0.35
 BuildRequires: libicu-devel >= 4.0
 BuildRequires: libtidy-devel >= 0.9
@@ -31,6 +31,7 @@ BuildRequires: openssl-devel >= 0.9.8
 BuildRequires: pcre-devel >= 7.8-2
 BuildRequires: t1lib-devel >= 5.1.2-1
 BuildRequires: zlib-devel >= 1.2.3-3
+BuildRequires: bzip2-devel
 
 Requires:      openssl-devel
 Requires:      pcre-devel
@@ -45,7 +46,7 @@ suited for Web development and can be embedded into HTML.
 %setup -q -n %{name}-%{version}
 %build
 EXTENSION_DIR=%{_libdir}/php/modules; export EXTENSION_DIR
-%configure  --with-layout=GNU --with-libdir=lib64 --enable-fpm --with-gd --enable-intl --enable-bcmath --enable-mbstring --enable-pcntl --enable-json --enable-soap  --enable-sockets --enable-sqlite-utf8 --enable-zip --enable-shmop --enable-pdo --with-zlib --with-bz2 --with-curl --with-curlwrappers --with-jpeg-dir --with-freetype-dir --with-png-dir --with-iconv --with-xpm-dir --with-zlib-dir --with-gettext --with-pcre-regex --with-mcrypt --with-mysql=mysqlnd --with-mysqli=mysqlnd --with-openssl --with-pdo-mysql=mysqlnd --with-pdo-sqlite --with-tidy=/usr --with-pear=%{_datadir}/php/pear --with-icu-dir=/usr --with-config-file-scan-dir=%{_sysconfdir}/php.d --disable-debug  --disable-ipv6
+%configure  --with-layout=GNU --with-libdir=lib64 --enable-fpm --with-gd --enable-intl --enable-exif  --enable-bcmath --enable-mbstring --enable-pcntl --enable-json --enable-soap  --enable-sockets --enable-sqlite-utf8 --enable-zip --enable-shmop --enable-pdo --with-zlib --with-bz2 --with-curl --with-curlwrappers --with-jpeg-dir --with-freetype-dir --with-png-dir --with-iconv --with-xpm-dir --with-zlib-dir --with-gettext --with-pcre-regex --with-mcrypt --with-mysql=mysqlnd --with-mysqli=mysqlnd --with-openssl --with-pdo-mysql=mysqlnd --with-pdo-sqlite --with-tidy=/usr --with-pear=%{_datadir}/php/pear --with-icu-dir=/usr --with-config-file-scan-dir=%{_sysconfdir}/php.d --disable-debug  --disable-ipv6
 
 make %{?_smp_mflags}
 
