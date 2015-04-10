@@ -1,6 +1,6 @@
 #!/bin/bash
 
-for group in XG-Redis-Server
+for group in Zabbix-Server
 do
 
     for items in "Memory usage" "CPU utilization" "Network TCP Connect status" "CPU load" 
