@@ -28,32 +28,24 @@ MySQL_DATABASE_NAME=zabbix
 DATE=$(date '+%Y-%m-%d')
 
 MySQLDUMP () {
-    [ -d ${MySQL_DUMP_PATH} ] || mkdir ${MySQL_DUMP_PATH}
+     [ -d ${MySQL_DUMP_PATH} ] || mkdir ${MySQL_DUMP_PATH}
     cd ${MySQL_DUMP_PATH}
     [ -d logs    ] || mkdir logs
     [ -d ${DATE} ] || mkdir ${DATE}
     cd ${DATE}
-
-
-    TABLE_NAME_ALL=$(${MYSQL_BIN_PATH} -u${MySQL_USER} -p${MySQL_PASSWORD}  -h${MySQL_HOST} ${MySQL_DATABASE_NAME} -e "show tables"|egrep -v "(Tables_in_zabbix)")
+    
+    #TABLE_NAME_ALL=$(${MYSQL_BIN_PATH} -u${MySQL_USER} -p${MySQL_PASSWORD}  -h${MySQL_HOST} ${MySQL_DATABASE_NAME} -e "show tables"|egrep -v "(Tables_in_zabbix)")
+    TABLE_NAME_ALL=$(${MYSQL_BIN_PATH} -u${MySQL_USER} -p${MySQL_PASSWORD}  -h${MySQL_HOST} ${MySQL_DATABASE_NAME} -e "show tables"|egrep -v "(Tables_in_zabbix|history*|trends*|acknowledges|alerts|auditlog|events|service_alarms)")
     for TABLE_NAME in ${TABLE_NAME_ALL}
     do
-        [[ 'history*|trends*|acknowledges|alerts|auditlog|events|service_alarms' =~ "${TABLE_NAME}" ]]
-        status="$?"
-        if [ "${status}" == 1 ];then
-  
-            ${MYSQL_DUMP_BIN_PATH} --opt -u${MySQL_USER} -p${MySQL_PASSWORD} -P${MySQL_PORT} -h${MySQL_HOST} ${MySQL_DATABASE_NAME} ${TABLE_NAME} >${TABLE_NAME}.sql
-        else
-            ${MYSQL_DUMP_BIN_PATH} --opt --no-tablespaces -u${MySQL_USER} -p${MySQL_PASSWORD} -P${MySQL_PORT} -h${MySQL_HOST} ${MySQL_DATABASE_NAME} ${TABLE_NAME} >${TABLE_NAME}.sql
-        fi
+        ${MYSQL_DUMP_BIN_PATH} --opt -u${MySQL_USER} -p${MySQL_PASSWORD} -P${MySQL_PORT} -h${MySQL_HOST} ${MySQL_DATABASE_NAME} ${TABLE_NAME} >${TABLE_NAME}.sql
         sleep 0.01
     done
 
 
     [ "$?" == 0 ] && echo "${DATE}: Backup zabbix succeed"     >> ${MySQL_DUMP_PATH}/logs/ZabbixMysqlDump.log
     [ "$?" != 0 ] && echo "${DATE}: Backup zabbix not succeed" >> ${MySQL_DUMP_PATH}/logs/ZabbixMysqlDump.log
-
-
+    
     cd ${MySQL_DUMP_PATH}/
     rm -rf $(date +%Y-%m-%d --date='5 days ago')
     exit 0
