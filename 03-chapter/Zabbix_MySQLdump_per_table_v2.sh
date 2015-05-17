@@ -28,7 +28,7 @@ MySQL_DATABASE_NAME=zabbix
 DATE=$(date '+%Y-%m-%d')
 
 MySQLDUMP () {
-     [ -d ${MySQL_DUMP_PATH} ] || mkdir ${MySQL_DUMP_PATH}
+    [ -d ${MySQL_DUMP_PATH} ] || mkdir ${MySQL_DUMP_PATH}
     cd ${MySQL_DUMP_PATH}
     [ -d logs    ] || mkdir logs
     [ -d ${DATE} ] || mkdir ${DATE}
@@ -42,7 +42,6 @@ MySQLDUMP () {
         sleep 0.01
     done
 
-
     [ "$?" == 0 ] && echo "${DATE}: Backup zabbix succeed"     >> ${MySQL_DUMP_PATH}/logs/ZabbixMysqlDump.log
     [ "$?" != 0 ] && echo "${DATE}: Backup zabbix not succeed" >> ${MySQL_DUMP_PATH}/logs/ZabbixMysqlDump.log
     
@@ -50,7 +49,6 @@ MySQLDUMP () {
     rm -rf $(date +%Y-%m-%d --date='5 days ago')
     exit 0
 }
-
 
 MySQLImport () {
     cd ${MySQL_DUMP_PATH}
