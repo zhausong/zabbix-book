@@ -11,7 +11,7 @@ import argparse
 import logging
 import datetime
  
-#QQ entprise
+#QQ enterprise
 #smtp_server = 'smtp.exmail.qq.com' 
 #smtp_port = 25 
 #smtp_user = 'itnihao_zabbix@itnihao.com'
