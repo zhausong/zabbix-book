@@ -1,16 +1,46 @@
 ##《Zabbix企业级分布式监控系统》
-   本项目是《Zabbix企业级分布式监控系统》一书的附件部分，该书已发售。  
-网站名称	链接
-亚马逊	http://www.amazon.cn/3/dp/B00MN6QEYK
-china-pub	http://product.china-pub.com/4275086
-京东	http://t.cn/RPY5JtR
-当当	http://t.cn/RPHauKF
-官方收录地址	http://www.zabbix.com/documentation.php
-
-   本书的读者QQ群：
-Zabbix企业级分布式监控 271659981 （可申请加入，验证码：Zabbix监控），扫描加入群。
+   本项目是《Zabbix企业级分布式监控系统》一书的附件部分(不仅限于附件，还有扩充内容)，该书可在各大网站买到。  
+<table>
+    <tr>
+        <td>网站名称</td>
+        <td>链接</td>
+    </tr>
+        <tr>
+        <td>亚马逊</td>
+        <td>http://www.amazon.cn/3/dp/B00MN6QEYK</td>
+    </tr>
+    <tr>
+        <td>china-pub</td>
+        <td>http://product.china-pub.com/4275086</td>
+    </tr>
+        <tr>
+        <td>京东</td>
+        <td>http://t.cn/RPY5JtR</td>
+    </tr>
+        <tr>
+        <td>当当</td>
+        <td>http://t.cn/RPHauKF</td>
+    </tr>
+    </tr>
+        <tr>
+        <td>官方收录地址</td>
+        <td>http://www.zabbix.com/documentation.php</td>
+    </tr>    
+</table>
+===
+QQ交流群
+```
+本书的读者QQ群【Zabbix群加群验证信息：Zabbix监控】 ：
+Zabbix企业级分布式监控 2群  189342378（500人可加） 
+Zabbix企业级分布式监控 1群  271659981（1000人已满）
+```
 ![图1](static/img/zabbix-QQ-group-1.jpeg)
-
+===
+勘误列表
+```
+https://github.com/itnihao/zabbix-book/blob/master/error-fix/README.md
+```
+===
 该书的目录如下：   
 
 第一部分Zabbix基础
@@ -305,28 +335,8 @@ Zabbix企业级分布式监控 271659981 （可申请加入，验证码：Zabbix
    17.2 Zabbix-agent的安装	    
    17.3 关于zabbix的升级	    
 ```
-
-===
-勘误列表
-===
-https://github.com/itnihao/zabbix-book/blob/master/error-fix/README.md
-
 ===
 开源文档 
-===
+```
 《Zabbix使用手册V2.0》下载地址http://pan.baidu.com/s/1qWDHXkK  提取密码为8kq4
-===
-本书的读者QQ群：
-===
-zabbix企业级分布式监控 271659981 （可申请加入，验证码：Zabbix监控）
-
-
-===
-其他Zabbix国内的QQ群：   
-===
-zabbix交流群：          92242469 （满员）   
-zabbix交流2群：         216490997（满员）  
-zabbix高级技术群：      142279493（满员）  
-Zabbix系统/运维/研发：  93287482 
-ZABBIX中文论坛：        62239409  
-
+```
