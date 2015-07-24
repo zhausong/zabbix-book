@@ -62,7 +62,7 @@ MySQLImport () {
         [[ 'yes|y|Y' =~ "${Input}" ]]
         status="$?"
         if [ "${status}" == "0"  ];then
-            echo "now inmport SQL....... Please wait......."
+            echo "now import SQL....... Please wait......."
         else
             exit 1
         fi
