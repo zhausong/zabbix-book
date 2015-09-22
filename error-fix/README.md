@@ -3,7 +3,8 @@
 前言 陈益超改为陈艺超
 
 P22  362+67+4=433  @一期一会     
-P40  /etc/snmp/snmpd.conf   
+P40  /etc/snmp/snmpd.conf  
+P47 trends_unit(存储非符号的整数)更正为trends_uint表。
 P56  将在（16.3）节中   
 P62  图web app少了下划线   
 P72 只有部分触发器（函数）  
