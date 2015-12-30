@@ -201,7 +201,8 @@ fi
 DAILY="history history_log history_str history_text history_uint"
 DAILY_IDS="itemid id itemid id itemid"
 
-MONTHLY="trends trends_uint acknowledges alerts auditlog events service_alarms"
+MONTHLY="trends trends_uint" 
+#"acknowledges alerts auditlog events service_alarms"
 MONTHLY_IDS=""
 
 TABLES="$DAILY $MONTHLY"
