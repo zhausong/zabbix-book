@@ -38,7 +38,10 @@ def send_mail(mail_to,subject,content):
     global senderr
      
     try: 
-        smtp = smtplib.SMTP() 
+        if smtp_port == 465:
+            smtp = smtplib.SMTP_SSL()
+        else:
+            smtp = smtplib.SMTP() 
         smtp.connect(smtp_server,smtp_port) 
         smtp.login(smtp_user,smtp_pass) 
         smtp.sendmail(smtp_user,mail_to,msg.as_string()) 
