@@ -20,7 +20,7 @@ EMAIL="root@localhost"
 #
 # How long to keep the daily history
 #
-daily_history_min=90
+daily_history_min=30
 
 #
 # How long to keep the monthly history (months)
@@ -201,7 +201,7 @@ fi
 DAILY="history history_log history_str history_text history_uint"
 DAILY_IDS="itemid id itemid id itemid"
 
-MONTHLY="trends trends_uint"
+MONTHLY="trends trends_uint acknowledges alerts auditlog events service_alarms"
 MONTHLY_IDS=""
 
 TABLES="$DAILY $MONTHLY"
@@ -451,7 +451,7 @@ conf=/etc/zabbix/zabbix_server.conf
 if [ $NONINTERACTIVE = 1 ]; then
 	yn='y'
 else
-	echo -e "\nDo you want to update the /etc/zabbix/zabbix_server.conf"
+	echo -e "\nIf Zabbix Version = 2.0 \nDo you want to update the /etc/zabbix/zabbix_server.conf"
 	echo -n "to disable housekeeping (Y/n): "
 	read yn
 fi
