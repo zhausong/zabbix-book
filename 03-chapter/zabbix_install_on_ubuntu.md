@@ -65,7 +65,7 @@ START=yes
 # mysql -uroot
 mysql> create database zabbix character set utf8 collate utf8_bin;
 mysql> grant all privileges on zabbix.* to zabbix@localhost identified by 'zabbix';
-mysql> flush privileges；
+mysql> flush privileges;
 ```
 3.7、导入Zabbix数据库   
 ```

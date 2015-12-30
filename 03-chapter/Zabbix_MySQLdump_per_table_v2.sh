@@ -3,6 +3,8 @@
 #mail: itnihao@qq.com
 #http://wwww.itnihao.com
 #https://github.com/itnihao/zabbix-book/blob/master/03-chapter/Zabbix_MySQLdump_per_table.sh
+#chmod 700 ${PATH}/Zabbix_MySQLdump_per_table_v2.sh
+#crontab -e (0 3 * * * ${PATH}/Zabbix_MySQLdump_per_table_v2.sh)
 
 red='\e[0;31m' # 红色  
 RED='\e[1;31m' 
@@ -34,11 +36,12 @@ MySQLDUMP () {
     [ -d ${DATE} ] || mkdir ${DATE}
     cd ${DATE}
     
-    #TABLE_NAME_ALL=$(${MYSQL_BIN_PATH} -u${MySQL_USER} -p${MySQL_PASSWORD}  -h${MySQL_HOST} ${MySQL_DATABASE_NAME} -e "show tables"|egrep -v "(Tables_in_zabbix)")
-    TABLE_NAME_ALL=$(${MYSQL_BIN_PATH} -u${MySQL_USER} -p${MySQL_PASSWORD}  -h${MySQL_HOST} ${MySQL_DATABASE_NAME} -e "show tables"|egrep -v "(Tables_in_zabbix|history*|trends*|acknowledges|alerts|auditlog|events|service_alarms)")
+    TABLE_NAME_ALL=$(${MYSQL_BIN_PATH} -u${MySQL_USER} -p${MySQL_PASSWORD}  -h${MySQL_HOST} ${MySQL_DATABASE_NAME} -e \
+    "show tables"|egrep -v "(Tables_in_zabbix|history*|trends*|acknowledges|alerts|auditlog|events|service_alarms)")
     for TABLE_NAME in ${TABLE_NAME_ALL}
     do
-        ${MYSQL_DUMP_BIN_PATH} --opt -u${MySQL_USER} -p${MySQL_PASSWORD} -P${MySQL_PORT} -h${MySQL_HOST} ${MySQL_DATABASE_NAME} ${TABLE_NAME} >${TABLE_NAME}.sql
+        ${MYSQL_DUMP_BIN_PATH} --opt -u${MySQL_USER} -p${MySQL_PASSWORD} -P${MySQL_PORT} -h${MySQL_HOST} \
+        ${MySQL_DATABASE_NAME} ${TABLE_NAME} >${TABLE_NAME}.sql
         sleep 0.01
     done
 
@@ -46,18 +49,19 @@ MySQLDUMP () {
     [ "$?" != 0 ] && echo "${DATE}: Backup zabbix not succeed" >> ${MySQL_DUMP_PATH}/logs/ZabbixMysqlDump.log
     
     cd ${MySQL_DUMP_PATH}/
-    rm -rf $(date +%Y-%m-%d --date='5 days ago')
+    [ "$?" == 0 ] && rm -rf $(date +%Y-%m-%d --date='5 days ago')
     exit 0
 }
 
 MySQLImport () {
     cd ${MySQL_DUMP_PATH}
-    DATE=$(ls  /mysql_backup/ |egrep "\b^[0-9]+-[0-9]+-[0-9]+$\b")
+    DATE=$(ls  ${MySQL_DUMP_PATH} |egrep "\b^[0-9]+-[0-9]+-[0-9]+$\b")
     echo -e "${green}${DATE}"
     echo -e "${blue}what DATE do you want to import,please input date:${NC}"
     read SELECT_DATE
     if [ -d "${SELECT_DATE}" ];then
-        echo -e "you select is ${green}${SELECT_DATE}${NC}, do you want to contine,if,input ${red}(yes|y|Y)${NC},else then exit"
+        echo -e "you select is ${green}${SELECT_DATE}${NC}, do you want to contine,if,input ${red}(yes|y|Y)${NC},\
+        else then exit"
         read Input
         [[ 'yes|y|Y' =~ "${Input}" ]]
         status="$?"
