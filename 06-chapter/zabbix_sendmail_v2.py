@@ -30,8 +30,8 @@ smtp_user   ='itnihao_zabbix@qq.com'
 smtp_pass   ='1234567890'
 
 def send_mail(mail_to,subject,content): 
-    msg = MIMEText(content) 
-    msg['Subject'] = subject 
+    msg = MIMEText(content,_subtype='plain', _charset='utf-8')
+    msg['Subject'] = unicode(subject,'UTF-8')
     msg['From'] = smtp_user 
     msg['to'] = mail_to 
     global sendstatus
