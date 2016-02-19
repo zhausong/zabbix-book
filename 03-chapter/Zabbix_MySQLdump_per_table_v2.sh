@@ -60,8 +60,7 @@ MySQLImport () {
     echo -e "${blue}what DATE do you want to import,please input date:${NC}"
     read SELECT_DATE
     if [ -d "${SELECT_DATE}" ];then
-        echo -e "you select is ${green}${SELECT_DATE}${NC}, do you want to contine,if,input ${red}(yes|y|Y)${NC},\
-        else then exit"
+        echo -e "you select is ${green}${SELECT_DATE}${NC}, do you want to contine,if,input ${red}(yes|y|Y)${NC},if other exit"
         read Input
         [[ 'yes|y|Y' =~ "${Input}" ]]
         status="$?"
