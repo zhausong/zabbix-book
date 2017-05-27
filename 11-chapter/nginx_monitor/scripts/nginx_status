@@ -45,25 +45,25 @@ function checkavailable {
     fi
 }
 function active {
-    checkavailable|| curl -s "${nginxstatus}" | grep 'Active' | awk '{print $3}'
+    checkavailable && curl -s "${nginxstatus}" | grep 'Active' | awk '{print $3}'
 }
 function reading {
-    checkavailable|| curl -s "${nginxstatus}" | grep 'Reading' | awk '{print $2}'
+    checkavailable && curl -s "${nginxstatus}" | grep 'Reading' | awk '{print $2}'
 }
 function writing {
-    checkavailable|| curl -s "${nginxstatus}" | grep 'Writing' | awk '{print $4}'
+    checkavailable &&  curl -s "${nginxstatus}" | grep 'Writing' | awk '{print $4}'
 }
 function waiting {
-    checkavailable|| curl -s "${nginxstatus}" | grep 'Waiting' | awk '{print $6}'
+    checkavailable && curl -s "${nginxstatus}" | grep 'Waiting' | awk '{print $6}'
 }
 function accepts {
-    checkavailable|| curl -s "${nginxstatus}" | awk NR==3 | awk '{print $1}'
+    checkavailable && curl -s "${nginxstatus}" | awk NR==3 | awk '{print $1}'
 }
 function handled {
-    checkavailable|| curl -s "${nginxstatus}" | awk NR==3 | awk '{print $2}'
+    checkavailable && curl -s "${nginxstatus}" | awk NR==3 | awk '{print $2}'
 }
 function requests {
-    checkavailable|| curl -s "${nginxstatus}" | awk NR==3 | awk '{print $3}'
+    checkavailable && curl -s "${nginxstatus}" | awk NR==3 | awk '{print $3}'
 }
 
 
