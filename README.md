@@ -27,24 +27,24 @@
         <td>http://www.zabbix.com/documentation.php</td>
     </tr>    
 </table>
-===
-QQ交流群
+
+##### QQ交流群
 ```
 本书的读者QQ群【Zabbix群加群验证信息：Zabbix监控】 ：
 Zabbix企业级分布式监控 2群  189342378（500人可加） 
 Zabbix企业级分布式监控 1群  271659981（1000人已满）
 ```
 ![图1](static/img/zabbix-QQ-group-1.jpeg)
-===
-勘误列表
+
+### 勘误列表
 ```
 https://github.com/itnihao/zabbix-book/blob/master/error-fix/README.md
 ```
-===
-该书的目录如下：   
+
+### 该书的目录如下：   
 
 第一部分Zabbix基础
-=
+
 第一章，监控系统简介
 ====================================
 ```
