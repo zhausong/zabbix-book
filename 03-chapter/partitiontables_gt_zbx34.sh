@@ -503,7 +503,7 @@ MAILTO=$mailto
 tmpfile=/tmp/housekeeping\$\$
 
 date >\$tmpfile
-/usr/bin/mysql --skip-column-names -B -h localhost -u zabbix -pzabbix zabbix -e "CALL create_zabbix_partitions();" >>\$tmpfile 2>&1
+/usr/bin/mysql --skip-column-names -B -h localhost -u${DBUSER} -p${DBPASS} zabbix -e "CALL create_zabbix_partitions();" >>\$tmpfile 2>&1
 $PATHTOMAILBIN -s "Zabbix MySql Partition Housekeeping" \$MAILTO <\$tmpfile
 rm -f \$tmpfile
 _EOF_
